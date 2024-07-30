@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import joblib
 import pandas as pd
+import glob
+print(glob.glob("*"))
 
 app = Flask(__name__)
 

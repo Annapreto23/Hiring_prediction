@@ -21,8 +21,13 @@ body {
     box-sizing: border-box; 
 }
 
-h1, h2 {
-    font-size: 24px;
+h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
@@ -32,26 +37,30 @@ label {
     font-weight: bold;
 }
 
-input[type="number"] {
-    width: 100%;
+input[type="number"], select {
+    width: 50%;
     padding: 8px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-button, input[type="submit"] {
-    background: #28a745;
+button, input[type="submit"], .button {
+    background: #5c84dc;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    text-decoration: none;
+    display: block;
+    margin: 10px auto 0 auto; 
+
 }
 
-button:hover, input[type="submit"]:hover {
-    background: #218838;
+button:hover, input[type="submit"]:hover, .button:hover {
+    background: #214288;
 }
 
 p, ul {
@@ -63,9 +72,9 @@ li {
 }
 
 .question {
-    display: none;  /* All questions are hidden by default */
+    display: none;  
 }
 
 .question.active {
-    display: block; /* Only the active question is displayed */
+    display: block; 
 }
