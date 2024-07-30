@@ -10,8 +10,8 @@ def before_request():
         url = request.url.replace('http://', 'https://', 1)
         return redirect(url, code=301)
     
-    if 'your-heroku-app.herokuapp.com' in request.url:
-        url = request.url.replace('your-heroku-app.herokuapp.com', 'your-custom-domain.com')
+    if 'https://hiring-predictions-7d934ea23a7c.herokuapp.com/' in request.url:
+        url = request.url.replace('https://hiring-predictions-7d934ea23a7c.herokuapp.com/', 'hiringpredictions.com')
         return redirect(url, code=301)
 
 # Load the trained model
