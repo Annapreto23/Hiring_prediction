@@ -1,17 +1,19 @@
 from flask import Flask, request, render_template
 import joblib
 import pandas as pd
-import glob
-print(glob.glob("*"))
 
 app = Flask(__name__)
 
 # Load the trained model
-model_filename = 'model/random_forest_model.pkl'
+model_filename = 'Hiring_prediction/model/random_forest_model.pkl'
 model = joblib.load(model_filename)
 
 @app.route('/')
 def home():
+    return render_template('home.html')
+
+@app.route('/form')
+def form():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])

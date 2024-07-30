@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Prediction Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        p {
+            margin: 20px 0;
+        }
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Hiring Prediction Model</h1>
+        <p>This application uses a machine learning model based on the Random Forest algorithm to predict the likelihood of being hired based on various attributes. The model has been trained on a dataset sourced from Kaggle, providing a comprehensive view of candidate attributes and recruitment factors.</p>
+
+        <h2>About the Model</h2>
+        <p>The Random Forest algorithm is an ensemble learning method that combines multiple decision trees to improve predictive accuracy and control overfitting. This model uses various factors such as age, gender, education level, experience years, and more to estimate your hiring chances.</p>
+
+        <h2>Dataset Information</h2>
+        <p>The dataset used for training the model is shared by Rabie El Kharoua and is original..</p>
+
+        <h2>Start the Prediction</h2>
+        <p>To find out your likelihood of being hired based on your profile, please fill out the form below.</p>
+        <button onclick="window.location.href='/form'">Start Form</button>
+
+        <div class="footer">
+            <p>Project created by Anna Preto and available on <a href="https://github.com/Annapreto23/Hiring_prediction.git" target="_blank">GitHub</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
