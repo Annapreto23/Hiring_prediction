@@ -4,77 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiring Prediction Form</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}", type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Hiring Prediction Form</h1>
-    <p>Enter the details below to get a hiring prediction. Please follow the instructions for each field.</p>
-    <form action="/predict" method="post">
-        <label for="Age">Age:</label>
-        <p>Enter your age. The value should be between 20 and 50 years.</p>
-        <input type="number" id="Age" name="Age" min="20" max="50" required><br><br>
-        
-        <label for="Gender">Gender:</label>
-        <p>Enter 0 for Male, 1 for Female.</p>
-        <input type="number" id="Gender" name="Gender" min="0" max="1" required><br><br>
-        
-        <label for="EducationLevel">Education Level:</label>
-        <p>Enter one of the following values:</p>
-        <ul>
-            <li>1: Bachelor's </li>
-            <li>2: Bachelor's </li>
-            <li>3: Master's</li>
-            <li>4: PhD</li>
-        </ul>
-        <input type="number" id="EducationLevel" name="EducationLevel" min="1" max="4" required><br><br>
-        
-        <label for="ExperienceYears">Experience Years:</label>
-        <p>Enter the number of years of professional experience. The value should be between 0 and 15 years.</p>
-        <input type="number" id="ExperienceYears" name="ExperienceYears" min="0" max="15" required><br><br>
-        
-        <label for="PreviousCompanies">Previous Companies Worked:</label>
-        <p>Enter the number of previous companies where you have worked. The value should be between 1 and 5 companies.</p>
-        <input type="number" id="PreviousCompanies" name="PreviousCompanies" min="1" max="5" required><br><br>
-        
-        <label for="DistanceFromCompany">Distance From Company:</label>
-        <p>Enter the distance in kilometers from your residence to the company. The value should be between 1 and 50 kilometers.</p>
-        <input type="number" step="0.1" id="DistanceFromCompany" name="DistanceFromCompany" min="1" max="50" required><br><br>
-        
-        <label for="InterviewScore">Interview Score:</label>
-        <p>Enter the score you achieved in the interview process. The value should be between 0 and 100.</p>
-        <input type="number" id="InterviewScore" name="InterviewScore" min="0" max="100" required><br><br>
-        
-        <label for="SkillScore">Skill Score:</label>
-        <p>Enter your assessment score of technical skills. The value should be between 0 and 100.</p>
-        <input type="number" id="SkillScore" name="SkillScore" min="0" max="100" required><br><br>
-        
-        <label for="PersonalityScore">Personality Score:</label>
-        <p>Enter your evaluation score of personality traits. The value should be between 0 and 100.</p>
-        <input type="number" id="PersonalityScore" name="PersonalityScore" min="0" max="100" required><br><br>
-        
-        <label for="RecruitmentStrategy">Recruitment Strategy:</label>
-        <p>Enter one of the following values:</p>
-        <ul>
-            <li>1: Aggressive</li>
-            <li>2: Moderate</li>
-            <li>3: Conservative</li>
-        </ul>
-        <input type="number" id="RecruitmentStrategy" name="RecruitmentStrategy" min="1" max="3" required><br><br>
-
-        <input type="submit" value="Predict">
-    </form>
-</div>
-<script>
-    function nextQuestion(questionNumber) {
-        var currentQuestion = document.querySelector('.question:not([style*="display: none"])');
-        currentQuestion.style.display = 'none';
-        var nextQuestion = document.getElementById('question' + questionNumber);
-        if (nextQuestion) {
-            nextQuestion.style.display = 'block';
-        } else {
-            document.getElementById('submit').style.display = 'block';
+    <div class="container">
+        <h1>Hiring Prediction Form</h1>
+        <form id="form" action="/predict" method="post">
+            <div class="question active" id="question1">
+                <h2>Enter your age</h2>
+                <p>Enter your age. The value should be between 20 and 50 years.</p>
+                <input type="number" id="Age" name="Age" min="20" max="50" required>
+                <button type="button" onclick="nextQuestion(2)">Next</button>
+            </div>
+            <div class="question" id="question2">
+                <h2>Gender</h2>
+                <p>Enter 0 for Male, 1 for Female.</p>
+                <input type="number" id="Gender" name="Gender" min="0" max="1" required>
+                <button type="button" onclick="nextQuestion(3)">Next</button>
+            </div>
+            <div class="question" id="question3">
+                <h2>Education Level</h2>
+                <p>Enter one of the following values:</p>
+                <ul>
+                    <li>1: Bachelor's (Type 1)</li>
+                    <li>2: Bachelor's (Type 2)</li>
+                    <li>3: Master's</li>
+                    <li>4: PhD</li>
+                </ul>
+                <input type="number" id="EducationLevel" name="EducationLevel" min="1" max="4" required>
+                <button type="button" onclick="nextQuestion(4)">Next</button>
+            </div>
+            <div class="question" id="question4">
+                <h2>Experience Years</h2>
+                <p>Enter the number of years of professional experience. The value should be between 0 and 15 years.</p>
+                <input type="number" id="ExperienceYears" name="ExperienceYears" min="0" max="15" required>
+                <button type="button" onclick="nextQuestion(5)">Next</button>
+            </div>
+            <div class="question" id="question5">
+                <h2>Previous Companies Worked</h2>
+                <p>Enter the number of previous companies where you have worked. The value should be between 1 and 5 companies.</p>
+                <input type="number" id="PreviousCompanies" name="PreviousCompanies" min="1" max="5" required>
+                <button type="button" onclick="nextQuestion(6)">Next</button>
+            </div>
+            <div class="question" id="question6">
+                <h2>Distance From Company</h2>
+                <p>Enter the distance in kilometers from your residence to the company. The value should be between 1 and 50 kilometers.</p>
+                <input type="number" step="0.1" id="DistanceFromCompany" name="DistanceFromCompany" min="1" max="50" required>
+                <button type="button" onclick="nextQuestion(7)">Next</button>
+            </div>
+            <div class="question" id="question7">
+                <h2>Interview Score</h2>
+                <p>Enter the score you achieved in the interview process. The value should be between 0 and 100.</p>
+                <input type="number" id="InterviewScore" name="InterviewScore" min="0" max="100" required>
+                <button type="button" onclick="nextQuestion(8)">Next</button>
+            </div>
+            <div class="question" id="question8">
+                <h2>Skill Score</h2>
+                <p>Enter your assessment score of technical skills. The value should be between 0 and 100.</p>
+                <input type="number" id="SkillScore" name="SkillScore" min="0" max="100" required>
+                <button type="button" onclick="nextQuestion(9)">Next</button>
+            </div>
+            <div class="question" id="question9">
+                <h2>Personality Score</h2>
+                <p>Enter your evaluation score of personality traits. The value should be between 0 and 100.</p>
+                <input type="number" id="PersonalityScore" name="PersonalityScore" min="0" max="100" required>
+                <button type="button" onclick="nextQuestion(10)">Next</button>
+            </div>
+            <div class="question" id="question10">
+                <h2>Recruitment Strategy</h2>
+                <p>Enter one of the following values:</p>
+                <ul>
+                    <li>1: Aggressive</li>
+                    <li>2: Moderate</li>
+                    <li>3: Conservative</li>
+                </ul>
+                <input type="number" id="RecruitmentStrategy" name="RecruitmentStrategy" min="1" max="3" required>
+                <button type="button" onclick="nextQuestion('submit')">Next</button>
+            </div>
+            <div class="question" id="submit" style="display:none;">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+    </div>
+    <script>
+        function nextQuestion(questionNumber) {
+            var currentQuestion = document.querySelector('.question.active');
+            currentQuestion.classList.remove('active');
+            currentQuestion.style.display = 'none';
+            var nextQuestion = document.getElementById('question' + questionNumber);
+            if (nextQuestion) {
+                nextQuestion.style.display = 'block';
+                nextQuestion.classList.add('active');
+            } else {
+                document.getElementById('submit').style.display = 'block';
+                document.getElementById('submit').classList.add('active');
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
