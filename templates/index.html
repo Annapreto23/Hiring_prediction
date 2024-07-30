@@ -21,8 +21,8 @@
         <label for="EducationLevel">Education Level:</label>
         <p>Enter one of the following values:</p>
         <ul>
-            <li>1: Bachelor's (Type 1)</li>
-            <li>2: Bachelor's (Type 2)</li>
+            <li>1: Bachelor's </li>
+            <li>2: Bachelor's </li>
             <li>3: Master's</li>
             <li>4: PhD</li>
         </ul>
@@ -63,5 +63,18 @@
 
         <input type="submit" value="Predict">
     </form>
+</div>
+<script>
+    function nextQuestion(questionNumber) {
+        var currentQuestion = document.querySelector('.question:not([style*="display: none"])');
+        currentQuestion.style.display = 'none';
+        var nextQuestion = document.getElementById('question' + questionNumber);
+        if (nextQuestion) {
+            nextQuestion.style.display = 'block';
+        } else {
+            document.getElementById('submit').style.display = 'block';
+        }
+    }
+</script>
 </body>
 </html>
