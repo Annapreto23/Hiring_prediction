@@ -6,13 +6,8 @@ app = Flask(__name__)
 
 @app.before_request
 def before_request():
-    if request.url.startswith('http://'):
-        url = request.url.replace('http://', 'https://', 1)
-        return redirect(url, code=301)
-    
-    if 'https://hiring-predictions-7d934ea23a7c.herokuapp.com/' in request.url:
-        url = request.url.replace('https://hiring-predictions-7d934ea23a7c.herokuapp.com/', 'hiringpredictions.com')
-        return redirect(url, code=301)
+    url = request.url.replace('https://hiring-predictions-7d934ea23a7c.herokuapp.com/', 'hiringpredictions.com')
+    return redirect(url, code=301)
 
 # Load the trained model
 model_filename = 'model/random_forest_model.pkl'
