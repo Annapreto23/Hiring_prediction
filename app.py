@@ -1,19 +1,8 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template
 import joblib
 import pandas as pd
 
 app = Flask(__name__)
-
-@app.before_request
-def before_request():
-    url = request.url
-    if url.startswith('http://'):
-        url = url.replace('http://', 'https://', 1)
-        return redirect(url, code=301)
-
-    if 'hiring-predictions-7d934ea23a7c.herokuapp.com' in url:
-        url = url.replace('hiring-predictions-7d934ea23a7c.herokuapp.com', 'hiringpredictions.com')
-        return redirect(url, code=301)
 
 # Load the trained model
 model_filename = 'model/random_forest_model.pkl'
