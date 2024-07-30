@@ -5,7 +5,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the trained model
-model_filename = 'Hiring_prediction/model/random_forest_model.pkl'
+model_filename = 'model/random_forest_model.pkl'
 model = joblib.load(model_filename)
 
 @app.route('/')
