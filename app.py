@@ -1,8 +1,18 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 import joblib
 import pandas as pd
 
 app = Flask(__name__)
+
+@app.before_request
+def before_request():
+    if request.url.startswith('http://'):
+        url = request.url.replace('http://', 'https://', 1)
+        return redirect(url, code=301)
+    
+    if 'your-heroku-app.herokuapp.com' in request.url:
+        url = request.url.replace('your-heroku-app.herokuapp.com', 'your-custom-domain.com')
+        return redirect(url, code=301)
 
 # Load the trained model
 model_filename = 'model/random_forest_model.pkl'
