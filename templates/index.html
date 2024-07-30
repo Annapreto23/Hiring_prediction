@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Prediction Form</title>
+</head>
+<body>
+    <h1>Hiring Prediction Form</h1>
+    <p>Enter the details below to get a hiring prediction. Please follow the instructions for each field.</p>
+    <form action="/predict" method="post">
+        <label for="Age">Age:</label>
+        <p>Enter your age. The value should be between 20 and 50 years.</p>
+        <input type="number" id="Age" name="Age" min="20" max="50" required><br><br>
+        
+        <label for="Gender">Gender:</label>
+        <p>Enter 0 for Male, 1 for Female.</p>
+        <input type="number" id="Gender" name="Gender" min="0" max="1" required><br><br>
+        
+        <label for="EducationLevel">Education Level:</label>
+        <p>Enter one of the following values:</p>
+        <ul>
+            <li>1: Bachelor's (Type 1)</li>
+            <li>2: Bachelor's (Type 2)</li>
+            <li>3: Master's</li>
+            <li>4: PhD</li>
+        </ul>
+        <input type="number" id="EducationLevel" name="EducationLevel" min="1" max="4" required><br><br>
+        
+        <label for="ExperienceYears">Experience Years:</label>
+        <p>Enter the number of years of professional experience. The value should be between 0 and 15 years.</p>
+        <input type="number" id="ExperienceYears" name="ExperienceYears" min="0" max="15" required><br><br>
+        
+        <label for="PreviousCompanies">Previous Companies Worked:</label>
+        <p>Enter the number of previous companies where you have worked. The value should be between 1 and 5 companies.</p>
+        <input type="number" id="PreviousCompanies" name="PreviousCompanies" min="1" max="5" required><br><br>
+        
+        <label for="DistanceFromCompany">Distance From Company:</label>
+        <p>Enter the distance in kilometers from your residence to the company. The value should be between 1 and 50 kilometers.</p>
+        <input type="number" step="0.1" id="DistanceFromCompany" name="DistanceFromCompany" min="1" max="50" required><br><br>
+        
+        <label for="InterviewScore">Interview Score:</label>
+        <p>Enter the score you achieved in the interview process. The value should be between 0 and 100.</p>
+        <input type="number" id="InterviewScore" name="InterviewScore" min="0" max="100" required><br><br>
+        
+        <label for="SkillScore">Skill Score:</label>
+        <p>Enter your assessment score of technical skills. The value should be between 0 and 100.</p>
+        <input type="number" id="SkillScore" name="SkillScore" min="0" max="100" required><br><br>
+        
+        <label for="PersonalityScore">Personality Score:</label>
+        <p>Enter your evaluation score of personality traits. The value should be between 0 and 100.</p>
+        <input type="number" id="PersonalityScore" name="PersonalityScore" min="0" max="100" required><br><br>
+        
+        <label for="RecruitmentStrategy">Recruitment Strategy:</label>
+        <p>Enter one of the following values:</p>
+        <ul>
+            <li>1: Aggressive</li>
+            <li>2: Moderate</li>
+            <li>3: Conservative</li>
+        </ul>
+        <input type="number" id="RecruitmentStrategy" name="RecruitmentStrategy" min="1" max="3" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
