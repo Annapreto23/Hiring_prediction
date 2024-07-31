@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 
 # Load the trained model
-model_filename = '../model/random_forest_model.pkl'
+model_filename = 'model/random_forest_model.pkl'
 model = joblib.load(model_filename)
 
 @app.route('/')
@@ -17,6 +17,7 @@ def form():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    print("Received data:", request.form)
     data = {
         'Age': float(request.form['Age']),
         'Gender': int(request.form['Gender']),

@@ -93,7 +93,7 @@
                     <option value="2">Moderate</option>
                     <option value="3">Conservative</option>
                 </select>
-                <button type="button" onclick="nextQuestion('submit')">Next</button>
+                <button type="button" onclick="nextQuestion('submit')">Submit</button>
             </div>
             <div class="question" id="submit" style="display:none;">
                 <input type="submit" value="Predict">
@@ -104,7 +104,7 @@
         function validateAge() {
             var age = document.getElementById('Age').value;
             var error = document.getElementById('error-age');
-            if (age < 20 || age > 50) {
+            if (age === '' || age < 20 || age > 50) {
                 error.textContent = 'Age must be between 20 and 50 years.';
                 return false;
             } else {
@@ -116,7 +116,7 @@
         function validateExperienceYears() {
             var experienceYears = document.getElementById('ExperienceYears').value;
             var error = document.getElementById('error-experience-years');
-            if (experienceYears < 0 || experienceYears > 15) {
+            if (experienceYears === '' || experienceYears < 0 || experienceYears > 15) {
                 error.textContent = 'Experience years must be between 0 and 15 years.';
                 return false;
             } else {
@@ -128,7 +128,7 @@
         function validatePreviousCompanies() {
             var previousCompanies = document.getElementById('PreviousCompanies').value;
             var error = document.getElementById('error-previous-companies');
-            if (previousCompanies < 1 || previousCompanies > 5) {
+            if (previousCompanies === '' || previousCompanies < 1 || previousCompanies > 5) {
                 error.textContent = 'Previous companies must be between 1 and 5.';
                 return false;
             } else {
@@ -140,7 +140,7 @@
         function validateDistanceFromCompany() {
             var distance = document.getElementById('DistanceFromCompany').value;
             var error = document.getElementById('error-distance-from-company');
-            if (distance < 1 || distance > 50) {
+            if (distance === '' ||distance < 1 || distance > 50) {
                 error.textContent = 'Distance must be between 1 and 50 kilometers.';
                 return false;
             } else {
@@ -152,7 +152,7 @@
         function validateInterviewScore() {
             var score = document.getElementById('InterviewScore').value;
             var error = document.getElementById('error-interview-score');
-            if (score < 0 || score > 100) {
+            if (score === '' ||score < 0 || score > 100) {
                 error.textContent = 'Interview score must be between 0 and 100.';
                 return false;
             } else {
@@ -164,7 +164,7 @@
         function validateSkillScore() {
             var score = document.getElementById('SkillScore').value;
             var error = document.getElementById('error-skill-score');
-            if (score < 0 || score > 100) {
+            if (score === '' || score < 0 || score > 100) {
                 error.textContent = 'Skill score must be between 0 and 100.';
                 return false;
             } else {
@@ -176,7 +176,7 @@
         function validatePersonalityScore() {
             var score = document.getElementById('PersonalityScore').value;
             var error = document.getElementById('error-personality-score');
-            if (score < 0 || score > 100) {
+            if (score === '' || score < 0 || score > 100) {
                 error.textContent = 'Personality score must be between 0 and 100.';
                 return false;
             } else {
@@ -189,7 +189,6 @@
             var currentQuestion = document.querySelector('.question.active');
             var isValid = true;
 
-
             if (currentQuestion.id === 'question1' && !validateAge()) isValid = false;
             if (currentQuestion.id === 'question4' && !validateExperienceYears()) isValid = false;
             if (currentQuestion.id === 'question5' && !validatePreviousCompanies()) isValid = false;
@@ -199,22 +198,34 @@
             if (currentQuestion.id === 'question9' && !validatePersonalityScore()) isValid = false;
 
             if (isValid) {
-                currentQuestion.classList.remove('active');
-                currentQuestion.style.display = 'none';
-                var nextQuestion = document.getElementById('question' + questionNumber);
-                if (nextQuestion) {
-                    nextQuestion.style.display = 'block';
-                    nextQuestion.classList.add('active');
+                if (questionNumber === 'submit') {
+                    document.getElementById('form').submit();
                 } else {
-                    document.getElementById('submit').style.display = 'block';
-                    document.getElementById('submit').classList.add('active');
+                    currentQuestion.classList.remove('active');
+                    currentQuestion.style.display = 'none';
+                    var nextQuestion = document.getElementById('question' + questionNumber);
+                    if (nextQuestion) {
+                        nextQuestion.style.display = 'block';
+                        nextQuestion.classList.add('active');
+                    } else {
+                        document.getElementById('submit').style.display = 'block';
+                        document.getElementById('submit').classList.add('active');
+                    }
                 }
             }
         }
+
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                nextQuestion(Number(document.querySelector('.question.active').id.replace('question', '')) + 1);
+                var currentQuestion = document.querySelector('.question.active');
+                var questionNumber = Number(currentQuestion.id.replace('question', '')) + 1;
+
+                if (currentQuestion.id === 'question10') {
+                    document.getElementById('form').submit();
+                } else {
+                    nextQuestion(questionNumber);
+                }
             }
         });
     </script>
